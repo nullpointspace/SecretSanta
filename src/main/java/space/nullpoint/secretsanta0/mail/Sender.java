@@ -30,13 +30,9 @@ class Sender {
 
         try {
             Message message = new MimeMessage(session);
-            //от кого
             message.setFrom(new InternetAddress(username, "Тайный Санта"));
-            //кому
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            //тема сообщения
             message.setSubject("Тайный Санта");
-            //текст
             message.setText(text);
 
             Transport.send(message);
