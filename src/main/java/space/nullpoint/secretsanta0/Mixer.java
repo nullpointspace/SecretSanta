@@ -1,6 +1,5 @@
 package space.nullpoint.secretsanta0;
 
-import lombok.Getter;
 import space.nullpoint.secretsanta0.model.Gender;
 import space.nullpoint.secretsanta0.model.User;
 
@@ -11,7 +10,6 @@ import java.util.Random;
 
 public class Mixer {
 
-    @Getter
     private static long seed;
     private static Random random;
 
@@ -22,7 +20,7 @@ public class Mixer {
     }
 
     public static List<User> stir(List<User> men, List<User> women) {
-        List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<>(men.size() + women.size());
         int k = Math.min(men.size(), women.size()) * 2;
 
         for (int i = 0; i < k; i++) {
@@ -39,19 +37,17 @@ public class Mixer {
             men = women;
         }
 
-        if (!men.isEmpty()) {
-            while (!men.isEmpty()) {
-                int n = random.nextInt(men.size());
-                users.add(men.remove(n));
-            }
+        while (!men.isEmpty()) {
+            int n = random.nextInt(men.size());
+            users.add(men.remove(n));
         }
 
         return setWard(users);
     }
 
     public static List<User> stir(List<User> users) {
-        List<User> men = new ArrayList<User>();
-        List<User> women = new ArrayList<User>();
+        List<User> men = new ArrayList<>();
+        List<User> women = new ArrayList<>();
 
         for (User user : users) {
             if (user.getGender() == Gender.Man)

@@ -12,9 +12,9 @@ public class Mail {
             "\n" +
             "Если до 7 января твой санта не объявится, напиши мне или подойди к Алёне";
 
-    public static void sendAllMail(List<User> users){
-        int i=1;
-        for (User user : users){
+    public static void sendAllMail(List<User> users) {
+        int i = 1;
+        for (User user : users) {
             Sender.send(text.replace("<User>", user.getName()).replace("<Ward>", user.getWard().getName()), user.getEmail());
             System.out.println("Отправлено писем " + i++ + " из " + users.size());
         }

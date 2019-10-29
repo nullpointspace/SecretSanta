@@ -17,7 +17,7 @@ public class Main {
     }
 
     private static List<User> getUsers() {
-        List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String s;
@@ -31,7 +31,7 @@ public class Main {
 
                 users.add(new User(name, email, gender));
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
